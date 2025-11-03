@@ -3,6 +3,17 @@
 Este proyecto implementa el **analizador léxico** del lenguaje *Mini0* usando **Flex**, **GCC** y **Make**.
 
 ---
+# Lexico
+LETRA           [a-zA-Z]
+DIGITO          [0-9]
+HEXDIGITO       [0-9a-fA-F]
+ID              ({LETRA}|)({LETRA}|{DIGITO}|)*
+DECIMAL         {DIGITO}+
+HEXADECIMAL     0x{HEXDIGITO}+
+STRING          \"([^\\\"\n]|\\.)*\"
+ESPACIO         [ \t\r]
+SALTO_LINEA     \n
+---
 
 ## 🚀 PASO 1: ABRIR WSL
 
