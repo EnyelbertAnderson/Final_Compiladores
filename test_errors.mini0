@@ -1,0 +1,6 @@
+fun main(): int
+    x = 10$20
+    y = @variable
+    z = test#error
+    return 0
+end

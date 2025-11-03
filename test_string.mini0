@@ -1,0 +1,7 @@
+fun main(): int
+    s: string
+    s = "Hola\nMundo"
+    s = "Tab:\taqui"
+    s = "Comillas: \"hola\""
+    return 0
+end

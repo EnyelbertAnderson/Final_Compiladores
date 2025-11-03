@@ -1,0 +1,12 @@
+fun main(): int
+    x: int
+    y: bool
+    x = 42
+    y = true
+    
+    if x > 10
+        return 1
+    end
+    
+    return 0
+end
