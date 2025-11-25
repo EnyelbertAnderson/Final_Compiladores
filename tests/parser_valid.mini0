@@ -1,0 +1,31 @@
+contador: int
+
+fun factorial(n: int): int
+    resultado: int
+    resultado = 1
+    while n > 1
+        resultado = resultado * n
+        n = n - 1
+    loop
+
+    return resultado
+end
+
+fun main(): int
+    numeros: []int
+    x: int
+    flag: bool
+
+    numeros = new [10] int
+    numeros[0] = 0xA5
+
+    x = factorial(5)
+
+    if x >= 100 and x <= 200
+        flag = true
+    else
+        flag = false
+    end
+
+    return x
+end

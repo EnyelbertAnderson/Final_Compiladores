@@ -267,6 +267,24 @@ make
 
 # 5. Ejecutar pruebas
 ./mini0_lex test_basic.mini0
+## 6. Analizador sintáctico (nuevo)
+
+Se añadió un analizador sintáctico recursivo-descendente en C. Para compilar el parser use:
+
+```bash
+make clean
+make
+```
+
+El binario del parser se llama `mini0_parser`. Ejemplos para ejecutar:
+
+```bash
+./mini0_parser tests/parser_valid.mini0
+./mini0_parser tests/parser_error_missing_end.mini0
+./mini0_parser tests/parser_error_bad_syntax.mini0
+```
+
+En caso de éxito el parser imprimirá "Analisis sintactico completado" y retornará 0. En caso de errores léxicos o sintácticos el programa imprimirá la(s) causa(s) en stderr y retornará un código distinto de cero.
 ./mini0_lex test_hex.mini0
 ./mini0_lex test_string.mini0
 ./mini0_lex test_errors.mini0

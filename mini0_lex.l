@@ -167,38 +167,63 @@ SALTO_LINEA     \n
 
 %%
 
+// Función pública para analizar un archivo y llenar el buffer de tokens.
+// Devuelve 0 en caso de éxito, distinto de cero en caso de error (p.ej. archivo no encontrado).
+int analizar_lexico(const char *ruta_archivo) {
+    // Reiniciar estructura de tokens si se reutiliza la misma ejecución
+    if (tokens) {
+        for (int i = 0; i < num_tokens; i++) {
+            destruir_token(tokens[i]);
+        }
+        free(tokens);
+        tokens = NULL;
+        capacidad_tokens = 100;
+        num_tokens = 0;
+    }
+
+    yyin = fopen(ruta_archivo, "r");
+    if (!yyin) {
+        fprintf(stderr, "Error: no se puede abrir el archivo '%s'\n", ruta_archivo);
+        return 1;
+    }
+
+    // Ejecutar análisis léxico (llenará `tokens` y `num_tokens`)
+    yylex();
+
+    fclose(yyin);
+    return 0;
+}
+
+/* Proporcionar main para el ejecutable `mini0_lex`.
+   Muestra uso cuando no se proporciona archivo y, si se proporciona,
+   ejecuta el análisis léxico e imprime los tokens (comportamiento previo).
+*/
+ #ifndef BUILD_WITH_PARSER_MAIN
 int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "Uso: %s <archivo_mini0>\n", argv[0]);
         return 1;
     }
-    
-    // Abrir el archivo de entrada
-    yyin = fopen(argv[1], "r");
-    if (!yyin) {
-        fprintf(stderr, "Error: no se puede abrir el archivo '%s'\n", argv[1]);
-        return 1;
-    }
-    
-    // Ejecutar el análisis léxico
-    yylex();
-    
-    // Cerrar el archivo
-    fclose(yyin);
-    
+
+    int rc = analizar_lexico(argv[1]);
+    if (rc != 0) return rc;
+
     // Imprimir todos los tokens encontrados
     printf("\n=== ANÁLISIS LÉXICO COMPLETADO ===\n");
     printf("Total de tokens encontrados: %d\n\n", num_tokens);
-    
+
     for (int i = 0; i < num_tokens; i++) {
         imprimir_token(tokens[i]);
     }
-    
+
     // Liberar memoria
     for (int i = 0; i < num_tokens; i++) {
         destruir_token(tokens[i]);
     }
     free(tokens);
-    
+    tokens = NULL;
+    num_tokens = 0;
+
     return 0;
 }
+#endif

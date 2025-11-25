@@ -69,4 +69,9 @@ void destruir_token(Token *token);
 void imprimir_token(Token *token);
 const char* tipo_token_str(TipoToken tipo);
 
+// Tokens buffer (rellenado por el lexer). Declarados extern para que el parser pueda usarlos.
+extern Token **tokens;
+extern int num_tokens;
+extern int linea_actual;
+
 #endif

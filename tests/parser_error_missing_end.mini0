@@ -1,0 +1,6 @@
+fun main(): int
+    x: int
+    x = 10
+    if x > 5
+        x = x + 1
+    // Missing 'end' here
