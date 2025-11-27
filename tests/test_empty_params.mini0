@@ -1,0 +1,9 @@
+fun sinParametros(): int
+    return 42
+end
+
+fun main(): int
+    x: int
+    x = sinParametros()
+    return x
+end
