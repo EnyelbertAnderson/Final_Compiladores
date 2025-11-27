@@ -1,0 +1,13 @@
+fun suma(a: int, b: int, c: int, d: int): int
+    resultado: int
+    resultado = a + b
+    resultado = resultado + c
+    resultado = resultado + d
+    return resultado
+end
+
+fun main(): int
+    total: int
+    total = suma(10, 20, 30, 40)
+    return total
+end
