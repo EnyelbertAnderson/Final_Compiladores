@@ -1,0 +1,6 @@
+fun main(): int
+    arr: []int
+    x: int
+    x = arr[0
+    return x
+end
